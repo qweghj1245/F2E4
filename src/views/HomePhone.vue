@@ -3,35 +3,26 @@
     <div class="header">
       <div class="left">
         <img src="../assets/icon_LOGO.svg" />
-        <div class="left-title">
-          <div>Simple</div>
-          <div>pay</div>
-        </div>
       </div>
-      <div class="center">Payment Details</div>
       <div class="right">
         <img src="../assets/Profilepicture@2x.png" class="chick" />
-        <img src="../assets/button_profile.svg" />
       </div>
     </div>
     <div class="body">
-      <div class="steps">
-        <div class="step">
-          <img src="../assets/icon_number1.svg" />
-          <div>Account</div>
-        </div>
-        <div class="step">
-          <img src="../assets/icon_number2.svg" />
-          <div>Shipping</div>
-        </div>
-        <div class="step">
-          <img :src="number3" />
-          <div>Payment Details</div>
-        </div>
-        <div class="step">
-          <img :src="number4" />
-          <div>Order Complete</div>
-        </div>
+      <div class="big-title">Payment Details</div>
+        <div class="steps">
+          <div class="step">
+            <img src="../assets/icon_number1.svg">
+          </div>
+          <div class="step">
+            <img src="../assets/icon_number2.svg">
+          </div>
+          <div class="step">
+            <img :src="number3">
+          </div>
+          <div class="step">
+            <img :src="number4">
+          </div>
       </div>
       <div class="payment" v-show="payStatus === 'none'">
         <div class="title">Payment Method</div>
@@ -98,7 +89,7 @@
             <div>Total Payable</div>
             <div class="total-right">
               <div>13.5$</div>
-              <img src="../assets/icon_open.svg"/>
+              <img src="../assets/icon_open.svg" />
             </div>
           </div>
           <slide-up-down :active="showTotal" :duration="500">
@@ -131,8 +122,8 @@
           <div @click="status('confirm')">Confirm</div>
         </div>
       </div>
-      <complete v-show="payStatus === 'isPay'" @back="status('back')"></complete>
     </div>
+    <complete v-show="payStatus === 'isPay'" @back="status('back')"></complete>
   </div>
 </template>
 
@@ -231,61 +222,86 @@ export default {
 <style lang="scss" scoped>
 .home {
   width: 100%;
-  min-width: 1366px;
   .header {
     background-color: #efefef;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 26px 0 50px;
+    padding: 5px 26px 5px 50px;
+    position: relative;
+    height: 63px;
     .left {
       display: flex;
       align-items: center;
+      position: absolute;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
       img {
-        height: 75px;
+        width: 42.91px;
       }
-      .left-title {
-        font-size: 18px;
-        font-weight: bold;
-        text-align: center;
-        & > div:first-child {
-          color: #495c85;
-        }
-        & > div:last-child {
-          color: #ffc400;
-        }
-      }
-    }
-    .center {
-      color: #495c85;
-      font-size: 28px;
-      font-weight: bold;
-      padding-right: 76px;
     }
     .right {
       display: flex;
       cursor: pointer;
+      position: absolute;
+      right: 24px;
+      transform: translateY(-50%);
+      top: 50%;
       .chick {
-        width: 50px;
+        width: 34px;
         margin-right: 9px;
       }
     }
   }
   .body {
     position: relative;
-    padding: 28px 0 30px 0;
+    padding: 15px 21.22px 15px 21.22px;
+    .steps {
+      display: flex;
+      margin-bottom: 14px;
+      justify-content: center;
+      .step {
+        display: flex;
+        align-items: center;
+        &:last-child {
+          &::after {
+            display: none;
+          }
+        }
+        & > div {
+          color: #cccccc;
+          font-size: 14px;
+          font-weight: bold;
+          display: inline-block;
+          vertical-align: top;
+          margin-top: 2px;
+        }
+        &::after {
+          content: "";
+          display: block;
+          width: 30px;
+          border-top: dashed 1px #cccccc;
+        }
+      }
+    }
+    .big-title {
+      font-size: 18px;
+      font-weight: bold;
+      color: #495C85;
+      text-align: center;
+      margin-bottom: 10px;
+    }
     .payment {
-      width: 469px;
+      width: 100%;
       margin: 0 auto;
       .title {
-        font-size: 16px;
+        font-size: 14px;
         color: #999999;
         margin-bottom: 15px;
       }
       .pay-way {
         width: 100%;
-        height: 168px;
-        padding: 9px 10px;
+        padding: 5.33px 5.92px;
         border-radius: 5px;
         background-color: #e8e8e8;
         box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
@@ -297,32 +313,43 @@ export default {
           background-color: #fff;
         }
         & > div {
-          width: 220px;
-          height: 150px;
+          width: 50%;
           border-radius: 5px;
           cursor: pointer;
         }
         .visa {
-          margin-right: 9px;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          padding-top: 14.16px;
+          padding-bottom: 13.65px;
+          padding-left: 28.41px;
+          padding-right: 27.82px;
           .logo {
+            display: flex;
+            justify-content: center;
             & > img:first-child {
               margin-right: 10.6px;
+              width: 30px;
+            }
+            & > img:last-child {
+              width: 30px;
             }
           }
           .card {
             position: relative;
+            margin-top: 8.74px;
             & > img:first-child {
               margin-right: 40px;
+              width: 53.35px;
             }
             & > img:last-child {
               position: absolute;
               transform: translate(-50%, -50%);
               top: 68%;
               left: 67%;
+              width: 53.35px;
             }
           }
         }
@@ -331,8 +358,9 @@ export default {
           flex-direction: column;
           justify-content: center;
           align-items: center;
+          padding: 15px;
           & > img:first-child {
-            width: 69px;
+            width: 40px;
           }
           & > img:last-child {
             width: 39px;
@@ -341,10 +369,10 @@ export default {
       }
     }
     .info {
-      width: 469px;
+      width: 100%;
       border-radius: 5px;
       box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.16);
-      padding: 19px 121px 14px 123px;
+      padding: 20px 54px 25px 32px;
       .validate {
         position: absolute;
         color: #c83838;
@@ -359,7 +387,7 @@ export default {
           margin-bottom: 5px;
         }
         & > input {
-          width: 225px;
+          width: 100%;
           border-radius: 3px;
           border: solid 1px #cccccc;
           height: 30px;
@@ -436,9 +464,10 @@ export default {
         }
         .result {
           border-top: dashed 1px #e6e6e6;
-          width: 383px;
-          margin-left: 12px;
-          padding-top: 5.5px;
+          padding: 5.5px 75.18px 0px 12px;
+          & > div:last-child {
+            font-weight: bold;
+          }
         }
       }
     }
@@ -452,12 +481,14 @@ export default {
         color: #495c85;
         padding: 13px 0;
         cursor: pointer;
+        text-align: center;
+        width: 50%;
       }
       & > div:last-child {
         font-weight: bold;
         font-size: 16px;
         color: white;
-        width: 235px;
+        width: 140.05px;
         height: 47px;
         text-align: center;
         line-height: 47px;
@@ -466,36 +497,23 @@ export default {
         cursor: pointer;
       }
     }
-    .steps {
-      position: absolute;
-      transform: translate(53%, 23%);
-      .step {
-        & > img {
-          margin-right: 20px;
-        }
-        &:last-child {
-          &::after {
-            display: none;
-          }
-        }
-        & > div {
-          color: #cccccc;
-          font-size: 14px;
-          font-weight: bold;
-          display: inline-block;
-          vertical-align: top;
-          margin-top: 2px;
-        }
-        &::after {
-          content: "";
-          display: block;
-          width: 1px;
-          height: 30px;
-          border-left: dashed 1px #cccccc;
-          margin-left: 10px;
-          margin-top: -4px;
-        }
-      }
+  }
+  /deep/ .completed {
+    width: auto;
+    .title {
+      font-size: 18px;
+    }
+    .sub-title {
+      font-size: 12px;
+      width: auto;
+      margin-bottom: 20px;
+    }
+    .content {
+      margin: 0 auto;
+      width: calc(100% / 1.29);
+    }
+    .back {
+      margin-bottom: 25px;
     }
   }
 }
